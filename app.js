@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+const fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
 
@@ -16,6 +17,7 @@ nunjucks.configure('views', {
 });
 
 app.set('view engine', 'njk');
+app.use(fileUpload());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

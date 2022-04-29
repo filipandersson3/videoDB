@@ -1,4 +1,12 @@
 {% extends layout %}
 {% block  content %}
   <h1>{{message}}</h1>
+  <form ref='uploadForm' 
+      id='uploadForm' 
+      action='/upload' 
+      method='post' 
+      encType="multipart/form-data">
+        <input type="file" name="videoFile"/>
+        <input type='submit' value='Upload!'/>
+    </form>   
 {% endblock %}
