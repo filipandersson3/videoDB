@@ -5,6 +5,8 @@ var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 const fileUpload = require('express-fileupload');
 
+require('dotenv').config();
+
 var indexRouter = require('./routes/index');
 
 var app = express();
