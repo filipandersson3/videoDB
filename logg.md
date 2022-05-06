@@ -5,3 +5,5 @@ Förra lektionen gjorde jag design på figma, det gick bra och därför ska jag 
 ## Lektion 4
 Förra lektionen gjorde jag express med njk, scss så att det funkar och databas struktur som jag tror kommer funka. Gjorde också sidan gul och kan nu spara filer på server. Nu ska jag börja med att koppla databasen till sidan och göra några routes för index sidan.
 ## Lektion 5
+Förra lektionen gjorde jag så att GET route på index hämtar info från databasen och visar de videor som finns i en lista. Det funkar bra, så nu ska jag göra en sida för att lägga till nya videor och se till att de är i mp4 format.
+## Lektion 6
