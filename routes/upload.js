@@ -34,7 +34,7 @@ router.post('/', async (req, res, next) => {
           if (err) {
             return res.status(500).send(err);
           }
-          res.send('File uploaded!');
+          res.send('Video uploaded!');
         });
       } else {
         res.status(400).send(`Video couldn't be posted`);

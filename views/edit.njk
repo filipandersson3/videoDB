@@ -1,0 +1,35 @@
+{% extends layout %}
+{% block content %} 
+  <div class="container">
+    <div class="cards d-flex flex-wrap justify-content-center">
+      {% for video in videos %}
+        <div class="card" style="width: 42rem;">
+          <div class="card-body">
+            <form ref='uploadForm' 
+            id='uploadForm' 
+            action='/{{video.id}}}/edit' 
+            method='post' 
+            encType="multipart/form-data">
+            <input type="text" class="form-control mb-3" 
+                id="title" name="title" value="{{video.title}}"
+                placeholder="Change the title..." autocomplete="off">
+            <div class="card-text ratio ratio-16x9 mb-3">
+              <video controls>
+                <source src="/videos/{{video.path}}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <textarea rows="5" class="form-control mb-3" 
+                id="description" name="description" 
+                placeholder="Change the description..." 
+                autocomplete="off">{{video.description}}</textarea>
+            <input type='submit' value='Done!' 
+              class="btn btn-primary mr-auto mb-2"/>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}
