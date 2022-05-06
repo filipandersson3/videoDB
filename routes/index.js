@@ -58,7 +58,7 @@ router.post('/:id/edit', async (req, res, next) => {
   } else {
     await pool.promise()
       .query(
-        'UPDATE fipann_videos SET (title, description) = (?,?) WHERE id = ?', 
+        'UPDATE fipann_videos SET title = (?), description = (?) WHERE id = ?', 
         [title, description, id])
       .then((response) => {
         console.log(response);
