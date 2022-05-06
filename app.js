@@ -1,15 +1,16 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const sassMiddleware = require('node-sass-middleware');
 const fileUpload = require('express-fileupload');
 
 require('dotenv').config();
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const uploadRouter = require('./routes/upload');
 
-var app = express();
+const app = express();
 
 const nunjucks = require('nunjucks');
 
@@ -33,5 +34,6 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/upload', uploadRouter);
 
 module.exports = app;
