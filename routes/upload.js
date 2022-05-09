@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const pool = require('../database');
+const ThumbnailGenerator = require('@openquantum/video-thumbnail-generator-for-cloud-functions').default;
 
 /* GET home page. */
 router.get('/', async  function(req, res, next) {
@@ -34,6 +35,12 @@ router.post('/', async (req, res, next) => {
           if (err) {
             return res.status(500).send(err);
           }
+          const tg = new ThumbnailGenerator({
+            sourcePath: uploadPath,
+            thumbnailPath: 'public/thumbnail/',
+          });
+          
+          tg.generateOneByPercent(0);
           res.send('Video uploaded!');
         });
       } else {

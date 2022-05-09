@@ -8,7 +8,7 @@
             <h5 class="card-title">{{video.title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{video.updated_at}}</h6>
             <div class="card-text ratio ratio-16x9">
-              <video controls>
+              <video controls preload="none" poster="/thumbnail/{{ video.path | replace('.mp4', '') }}-thumbnail-320x240-0001.png">
                 <source src="/videos/{{video.path}}" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
