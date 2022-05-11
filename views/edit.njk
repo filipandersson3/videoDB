@@ -26,6 +26,9 @@
             <input type='submit' value='Done!' 
               class="btn btn-primary mr-auto mb-2"/>
             </form>
+            <form action="/{{item.id}}/delete/" method="GET">
+              <input type="submit" value="DELETE" class="btn btn-danger">
+            </form>
           </div>
         </div>
       {% endfor %}

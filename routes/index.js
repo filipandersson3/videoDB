@@ -1,6 +1,8 @@
 var express = require('express');
+const { renderString } = require('nunjucks');
 var router = express.Router();
 const pool = require('../database');
+const fs = require('fs');
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
@@ -58,7 +60,7 @@ router.post('/:id/edit', async (req, res, next) => {
   } else {
     await pool.promise()
       .query(
-        'UPDATE fipann_videos SET title = (?), description = (?) WHERE id = ?', 
+        'UPDATE fipann_videos SET title = (?), description = (?) WHERE id = ?',
         [title, description, id])
       .then((response) => {
         console.log(response);
@@ -67,6 +69,43 @@ router.post('/:id/edit', async (req, res, next) => {
         } else {
           res.status(400).send(`Video couldn't be posted`);
         }
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
+  }
+});
+
+router.get('/:id/delete', async (req, res, next) => {
+  const id = req.params.id;
+  if (isNaN(id)) {
+    res.status(400).send(`Bad request`);
+  } else {
+    await pool.promise()
+      .query(
+        'SELECT * FROM fipann_videos WHERE id = ?', [id])
+      .then(([rows, fields]) => {
+        console.log(rows[0].path);
+        fs.unlink("public/videos/" + rows[0].path, (err) => {
+          if (err) throw err;
+          fs.unlink("public/thumbnail/"+rows[0].path.replace('.mp4','')+"-thumbnail-320x240-0001.png", async (err) => {
+            if (err) throw err;
+            await pool.promise()
+            .query(
+              'DELETE FROM fipann_videos WHERE id = ?', [id]
+            )
+            .then((response) => {
+              console.log(response);
+              if (response[0].affectedRows === 1) {
+                res.send('Video deleted');
+              } else {
+                res.status(500).send('Video could not be deleted');
+              }
+            })
+          })
+        });
+
       })
       .catch(err => {
         console.log(err);
