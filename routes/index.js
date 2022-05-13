@@ -6,8 +6,11 @@ const fs = require('fs');
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
+  if (!req.session.sort) {
+    req.session.sort = 'updated_at DESC';
+  }
   await pool.promise()
-    .query('SELECT * FROM fipann_videos ORDER BY updated_at DESC')
+    .query('SELECT * FROM fipann_videos ORDER BY ' + req.session.sort)
     .then(([rows, fields]) => {
       console.log(rows);
       let data = {
@@ -26,6 +29,26 @@ router.get('/', async function (req, res, next) {
       })
     });
 });
+
+router.post('/', async (req, res, next) => {
+  const sort = req.body.sort;
+  if (sort == 'newest') {
+    req.session.sort = 'updated_at DESC'
+    res.redirect('/');
+  } else if (sort == 'oldest') {
+    req.session.sort = 'updated_at ASC'
+    res.redirect('/');
+  } else if (sort == 'alphabetically') {
+    req.session.sort = 'title ASC'
+    res.redirect('/');
+  } else if (sort == 'random') {
+    req.session.sort = 'RAND ()'
+    res.redirect('/');
+  } else {
+    res.status(400).send(`Bad request`);
+  }
+});
+
 
 router.get('/:id/edit', async (req, res, next) => {
   const id = req.params.id;

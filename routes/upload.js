@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const pool = require('../database');
 const ThumbnailGenerator = require('@openquantum/video-thumbnail-generator-for-cloud-functions').default;
+const md5 = require('md5');
+const fs = require('fs');
 
 /* GET home page. */
 router.get('/', async  function(req, res, next) {
@@ -19,9 +21,16 @@ router.post('/', async (req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
   }
-
   videoFile = req.files.videoFile;
+  if (!videoFile.name.endsWith('.mp4')) {
+    return res.status(400).send('Only .mp4 files are accepted.');
+  }
+  videoFile.name = md5(videoFile.name) + '.mp4';
   uploadPath = 'public/videos/' + videoFile.name;
+  while (fs.existsSync(uploadPath)) {
+    videoFile.name = md5(videoFile.name) + '.mp4';
+    uploadPath = 'public/videos/' + videoFile.name;
+  }
   const title = req.body.title;
   const description = req.body.description;
   

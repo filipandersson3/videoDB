@@ -10,3 +10,5 @@ Förra lektionen gjorde jag så att GET route på index hämtar info från datab
 Förra lektionen gjorde jag en fungerande upload och edit sida. Det gick bra. Nu ska jag göra thumbnails för videorna och eventuellt så att videor med samma namn får olika namn på servern.
 ## Lektion 7
 Förra lektionen gjorde jag thumbnails. Nu ska jag göra delete och sorterings möjlighet, ska kolla om jag kan döpa om filer som laddas upp med samma namn. (id är alltid olika, kanske döper videor efter post id?)
+## Lektion 8
+Förra lektionen gjorde jag en delete funktion som tar bort alla filer och databas entries som skapas vid upload. Det tog längre tid än förväntat men blev klart. Ska kolla om jag kan döpa om filer med samma namn.

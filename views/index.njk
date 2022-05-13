@@ -3,11 +3,31 @@
   <div class="container">
     <div class="cards d-flex flex-wrap justify-content-center">
       <ul class="card list-group list-group-horizontal" style="width: 42rem;">
-        <li class="list-group-item"><p>Sort by:</p></li>
-        <li class="list-group-item"><span class="badge rounded-pill bg-primary">Newest</span></li>
-        <li class="list-group-item"><span class="badge rounded-pill bg-primary">Oldest</span></li>
-        <li class="list-group-item"><span class="badge rounded-pill bg-primary">Alphabetically</span></li>
-        <li class="list-group-item"><span class="badge rounded-pill bg-primary">Random</span></li>
+        <li class="list-group-item d-flex align-items-center"><p style="margin-bottom: 0;">Sort by:</p></li>
+        <li class="list-group-item">
+          <form action="/" ref='newest' id='newest'  method="post">
+            <input type="hidden" id="sort" name="sort" value="newest">
+            <input type="submit" class="btn btn-outline-primary" value="Newest" />
+          </form>
+        </li>
+        <li class="list-group-item">
+          <form action="/" ref='oldest' id='oldest'  method="post">
+            <input type="hidden" id="sort" name="sort" value="oldest">
+            <input type="submit" class="btn btn-outline-primary" value="Oldest" />
+          </form>
+        </li>
+        <li class="list-group-item">
+          <form action="/" ref='alphabetically' id='alphabetically'  method="post">
+            <input type="hidden" id="sort" name="sort" value="alphabetically">
+            <input type="submit" class="btn btn-outline-primary" value="Alphabetically" />
+          </form>
+        </li>
+        <li class="list-group-item">
+          <form action="/" ref='random' id='random'  method="post">
+            <input type="hidden" id="sort" name="sort" value="random">
+            <input type="submit" class="btn btn-outline-primary" value="Random" />
+          </form>
+        </li>
       </ul>
       {% for video in videos %}
         <div class="card" style="width: 42rem;">
