@@ -2,7 +2,7 @@
 {% block content %} 
   <div class="container">
     <div class="cards d-flex flex-wrap justify-content-center">
-      <ul class="card list-group list-group-horizontal" style="width: 42rem;">
+      <ul class="card list-group list-group-horizontal mb-4" style="width: 42rem;">
         <li class="list-group-item d-flex align-items-center"><p style="margin-bottom: 0;">Sort by:</p></li>
         <li class="list-group-item">
           <form action="/" ref='newest' id='newest'  method="post">
@@ -30,11 +30,11 @@
         </li>
       </ul>
       {% for video in videos %}
-        <div class="card" style="width: 42rem;">
+        <div class="card mb-4" style="width: 42rem;">
           <div class="card-body">
-            <h5 class="card-title">{{video.title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{video.updated_at}}</h6>
-            <div class="card-text ratio ratio-16x9">
+            <h5 class="card-title mb-3">{{video.title}}</h5>
+            <h6 class="card-subtitle mb-3 text-muted">{{video.updated_at}}</h6>
+            <div class="card-text ratio ratio-16x9 mb-3">
               <video controls preload="none" poster="/thumbnail/{{ video.path | replace('.mp4', '') }}-thumbnail-320x240-0001.png">
                 <source src="/videos/{{video.path}}" type="video/mp4">
                 Your browser does not support the video tag.

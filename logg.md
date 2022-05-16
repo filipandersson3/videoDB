@@ -12,3 +12,7 @@ Förra lektionen gjorde jag en fungerande upload och edit sida. Det gick bra. Nu
 Förra lektionen gjorde jag thumbnails. Nu ska jag göra delete och sorterings möjlighet, ska kolla om jag kan döpa om filer som laddas upp med samma namn. (id är alltid olika, kanske döper videor efter post id?)
 ## Lektion 8
 Förra lektionen gjorde jag en delete funktion som tar bort alla filer och databas entries som skapas vid upload. Det tog längre tid än förväntat men blev klart. Ska kolla om jag kan döpa om filer med samma namn.
+## Lektion 9
+Förra lektionen gjorde jag så att alla videonamn blir hashade och så att sorteringen funkar. Nu ska jag börja med design, ändra fonts och lägga till färger, lägga till navbar.
+## Lektion 10
+Förra lektionen gjorde jag navbar, spacing och kollade på hur bootstrap kan ändras för att få till färger och sånt.
