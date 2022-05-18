@@ -1,8 +1,11 @@
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 $primary: #FFEC3F;
 
 $theme-colors: (
   "primary": $primary,
 );
+
+$font-family-sans-serif: 'Noto Sans', sans-serif;
