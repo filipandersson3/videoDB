@@ -5,7 +5,14 @@
 $primary: #FFEC3F;
 
 $theme-colors: (
-  "primary": $primary,
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
 );
 
 $font-family-sans-serif: 'Noto Sans', sans-serif;

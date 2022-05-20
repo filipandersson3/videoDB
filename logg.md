@@ -16,3 +16,6 @@ Förra lektionen gjorde jag en delete funktion som tar bort alla filer och datab
 Förra lektionen gjorde jag så att alla videonamn blir hashade och så att sorteringen funkar. Nu ska jag börja med design, ändra fonts och lägga till färger, lägga till navbar.
 ## Lektion 10
 Förra lektionen gjorde jag navbar, spacing och kollade på hur bootstrap kan ändras för att få till färger och sånt. Jag ska se om jag kan använda det nu och ändra färger, fonts och så vidare.
+
+## Lektion 11
+Förra lektionen fixade jag färger och fonts. Den här lektionen ska lägga till ikoner och göra sidan mer responsiv.
