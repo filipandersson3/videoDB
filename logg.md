@@ -19,3 +19,6 @@ Förra lektionen gjorde jag navbar, spacing och kollade på hur bootstrap kan ä
 
 ## Lektion 11
 Förra lektionen fixade jag färger och fonts. Den här lektionen ska lägga till ikoner och göra sidan mer responsiv.
+
+## Lektion 12
+Förra lektionen lade jag till ikoner och gjorde typ sidan mer responsiv, men måste fortsätta jobba på det. Nu ska jag också testa att hosta sidan
