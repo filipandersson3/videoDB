@@ -1,57 +1,61 @@
 {% extends layout %}
-{% block content %} 
-    <div class="row justify-content-center row-col-sm-8 row-col-lg-5 row-col-xxl-4">
-      <div class="col">
-        <ul class="card list-group list-group-horizontal mb-4">
-          <li class="list-group-item d-flex align-items-center"><p style="margin-bottom: 0;">Sort by:</p></li>
-          <li class="list-group-item">
-            <form action="/" ref='newest' id='newest'  method="post">
-              <input type="hidden" id="sort" name="sort" value="newest">
-              <input type="submit" class="btn btn-outline-dark" value="Newest" />
-            </form>
-          </li>
-          <li class="list-group-item">
-            <form action="/" ref='oldest' id='oldest'  method="post">
-              <input type="hidden" id="sort" name="sort" value="oldest">
-              <input type="submit" class="btn btn-outline-dark" value="Oldest" />
-            </form>
-          </li>
-          <li class="list-group-item">
-            <form action="/" ref='alphabetically' id='alphabetically'  method="post">
-              <input type="hidden" id="sort" name="sort" value="alphabetically">
-              <input type="submit" class="btn btn-outline-dark" value="Alphabetically" />
-            </form>
-          </li>
-          <li class="list-group-item">
-            <form action="/" ref='random' id='random'  method="post">
-              <input type="hidden" id="sort" name="sort" value="random">
-              <input type="submit" class="btn btn-outline-dark" value="Random" />
-            </form>
-          </li>
-        </ul>
-      </div>
-      <div class="col">
-        {% for video in videos %}
-          <div class="card mb-4 w-100">
-            <div class="card-body">
-              <h5 class="card-title mb-3 bigfont">{{video.title}}</h5>
-              <h6 class="card-subtitle mb-3 text-muted">{{video.updated_at}}</h6>
-              <div class="card-text ratio ratio-16x9 mb-3">
-                <video controls preload="none" poster="/thumbnail/{{ video.path | replace('.mp4', '') }}-thumbnail-320x240-0001.png">
-                  <source src="/videos/{{video.path}}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <p class="card-text">{{video.description}}</p>
-              <div class="d-flex">
-                <form action="{{video.id}}/edit" method="GET">
-                  <input type="submit" value="Edit" class="btn btn-primary mr-auto">
-                </form>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col col-sm-8 col-lg-5 col-xxl-4">
+      <div class="row mb-4">
+        <div class="col mr-0">
+          <p style="margin-bottom: 0;">Sort by:</p>
+        </div>
+        <div class="col mr-0">
+          <form action="/" ref='newest' id='newest'  method="post">
+            <input type="hidden" id="sort" name="sort" value="newest">
+            <input type="submit" class="btn btn-outline-dark" value="Newest"/>
+          </form>
+        </div>
+        <div class="col mr-0">
+          <form action="/" ref='oldest' id='oldest'  method="post">
+            <input type="hidden" id="sort" name="sort" value="oldest">
+            <input type="submit" class="btn btn-outline-dark" value="Oldest"/>
+          </form>
+        </div>
+        <div class="col mr-0">
+          <form action="/" ref='alphabetically' id='alphabetically'  method="post">
+            <input type="hidden" id="sort" name="sort" value="alphabetically">
+            <input type="submit" class="btn btn-outline-dark" value="Alphabetically"/>
+          </form>
+        </div>
+        <div class="col mr-0">
+          <form action="/" ref='random' id='random'  method="post">
+            <input type="hidden" id="sort" name="sort" value="random">
+            <input type="submit" class="btn btn-outline-dark" value="Random"/>
+          </form>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col col-sm-8 col-lg-5 col-xxl-4">
+      {% for video in videos %}
+        <div class="card mb-4 w-100">
+          <div class="card-body">
+            <h5 class="card-title mb-3 bigfont">{{video.title}}</h5>
+            <h6 class="card-subtitle mb-3 text-muted">{{video.updated_at}}</h6>
+            <div class="card-text ratio ratio-16x9 mb-3">
+              <video controls preload="none" poster="/thumbnail/{{ video.path | replace('.mp4', '') }}-thumbnail-320x240-0001.png">
+                <source src="/videos/{{video.path}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="card-text">{{video.description}}</p>
+            <div class="d-flex">
+              <form action="{{video.id}}/edit" method="GET">
+                <input type="submit" value="Edit" class="btn btn-primary mr-auto">
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 
 {% endblock %}
