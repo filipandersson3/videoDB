@@ -2,32 +2,32 @@
 {% block content %}
   <div class="row justify-content-center">
     <div class="col col-sm-8 col-lg-5 col-xxl-4">
-      <div class="row mb-4">
-        <div class="col mr-0">
+      <div class="d-flex justify-content-between flex-column flex-md-row flex-lg-row mb-4">
+        <div class="">
           <p style="margin-bottom: 0;">Sort by:</p>
         </div>
-        <div class="col mr-0">
+        <div class="">
           <form action="/" ref='newest' id='newest'  method="post">
             <input type="hidden" id="sort" name="sort" value="newest">
-            <input type="submit" class="btn btn-outline-dark" value="Newest"/>
+            <input type="submit" class="btn btn-outline-dark w-100" value="Newest"/>
           </form>
         </div>
-        <div class="col mr-0">
+        <div class="">
           <form action="/" ref='oldest' id='oldest'  method="post">
             <input type="hidden" id="sort" name="sort" value="oldest">
-            <input type="submit" class="btn btn-outline-dark" value="Oldest"/>
+            <input type="submit" class="btn btn-outline-dark w-100" value="Oldest"/>
           </form>
         </div>
-        <div class="col mr-0">
+        <div class="">
           <form action="/" ref='alphabetically' id='alphabetically'  method="post">
             <input type="hidden" id="sort" name="sort" value="alphabetically">
-            <input type="submit" class="btn btn-outline-dark" value="Alphabetically"/>
+            <input type="submit" class="btn btn-outline-dark w-100" value="Alphabetically"/>
           </form>
         </div>
-        <div class="col mr-0">
+        <div class="">
           <form action="/" ref='random' id='random'  method="post">
             <input type="hidden" id="sort" name="sort" value="random">
-            <input type="submit" class="btn btn-outline-dark" value="Random"/>
+            <input type="submit" class="btn btn-outline-dark w-100" value="Random"/>
           </form>
         </div>
       </div>
