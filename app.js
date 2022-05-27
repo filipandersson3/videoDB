@@ -21,7 +21,9 @@ nunjucks.configure('views', {
 });
 
 app.set('view engine', 'njk');
-app.use(fileUpload());
+app.use(fileUpload({
+  limits: { fileSize: 8 * 1024 * 1024 },
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

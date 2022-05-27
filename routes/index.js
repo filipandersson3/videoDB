@@ -22,11 +22,7 @@ router.get('/', async function (req, res, next) {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({
-        videos: {
-          error: 'Error getting meeps'
-        }
-      })
+      return displayError('Server side error', 500, res);
     });
 });
 
@@ -45,7 +41,7 @@ router.post('/', async (req, res, next) => {
     req.session.sort = 'RAND ()'
     res.redirect('/');
   } else {
-    res.status(400).send(`Bad request`);
+    return displayError('Bad request', 400, res);
   }
 });
 
@@ -53,13 +49,11 @@ router.post('/', async (req, res, next) => {
 router.get('/:id/edit', async (req, res, next) => {
   const id = req.params.id;
   if (isNaN(id)) {
-    res.status(400).send(`Bad request`);
+    return displayError('Bad request', 400, res);
   } else {
     await pool.promise()
       .query('SELECT * FROM fipann_videos WHERE id = ?', [id])
       .then(([rows, fields]) => {
-        console.log(rows);
-        console.log(id);
         let data = {
           layout: 'layout.njk',
           title: 'Edit video',
@@ -69,7 +63,7 @@ router.get('/:id/edit', async (req, res, next) => {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).send('Error getting videos.');
+        return displayError('Server side error', 500, res);
       });
   }
 });
@@ -79,23 +73,22 @@ router.post('/:id/edit', async (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;
   if (isNaN(id)) {
-    res.status(400).send(`Bad request`);
+    return displayError('Bad request', 400, res);
   } else {
     await pool.promise()
       .query(
         'UPDATE fipann_videos SET title = (?), description = (?) WHERE id = ?',
         [title, description, id])
       .then((response) => {
-        console.log(response);
         if (response[0].affectedRows === 1) {
-          res.send('Video edited');
+          res.redirect('/');
         } else {
-          res.status(400).send(`Video couldn't be posted`);
+          return displayError('Server side error', 500, res);
         }
       })
       .catch(err => {
         console.log(err);
-        res.status(500).send(err);
+        return displayError('Server side error', 500, res);
       });
   }
 });
@@ -103,7 +96,7 @@ router.post('/:id/edit', async (req, res, next) => {
 router.get('/:id/delete', async (req, res, next) => {
   const id = req.params.id;
   if (isNaN(id)) {
-    res.status(400).send(`Bad request`);
+    return displayError('Bad request', 400, res);
   } else {
     await pool.promise()
       .query(
@@ -112,18 +105,18 @@ router.get('/:id/delete', async (req, res, next) => {
         console.log(rows[0].path);
         fs.unlink("public/videos/" + rows[0].path, (err) => {
           if (err) throw err;
-          fs.unlink("public/thumbnail/"+rows[0].path.replace('.mp4','')+"-thumbnail-320x240-0001.png", async (err) => {
+          fs.unlink("public/thumbnail/"+rows[0].path.replace('.mp4','')
+          +"-thumbnail-320x240-0001.png", async (err) => {
             if (err) throw err;
             await pool.promise()
             .query(
               'DELETE FROM fipann_videos WHERE id = ?', [id]
             )
             .then((response) => {
-              console.log(response);
               if (response[0].affectedRows === 1) {
-                res.send('Video deleted');
+                res.redirect('/');
               } else {
-                res.status(500).send('Video could not be deleted');
+                return displayError('Server side error', 500, res);
               }
             })
           })
@@ -132,9 +125,18 @@ router.get('/:id/delete', async (req, res, next) => {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).send(err);
+        return displayError('Server side error', 500, res);
       });
   }
 });
+
+function displayError(msg, status, res) {
+  let data = {
+    layout: 'layout.njk',
+    title: 'Error',
+    errortext: msg
+  };
+  return res.status(status).render('error.njk', data);
+}
 
 module.exports = router;

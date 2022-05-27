@@ -1,8 +1,8 @@
 {% extends layout %}
 {% block content %}
-  <div class="container">
-    <div class="cards d-flex flex-wrap justify-content-center">
-      <div class="card" style="width: 42rem;">
+  <div class="row justify-content-center">
+    <div class="col col-sm-8 col-lg-5 col-xxl-4">
+      <div class="card mb-4 w-100">
         <div class="card-body">
           <h5 class="card-title mb-3 bigfont">Video upload</h5>
           <form ref='uploadForm' 
@@ -20,7 +20,7 @@
                 autocomplete="off"></textarea>
             </div>
             <div class="mb-4">
-              <h6 class="card-subtitle mb-3">Upload the video file</h6>
+              <h6 class="card-subtitle mb-3">Upload the video file (mp4 file below 8 MB)</h6>
               <input type="file" name="videoFile"/>
             </div>
             <input type='submit' value='Upload' 
