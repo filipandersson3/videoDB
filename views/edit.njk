@@ -5,11 +5,11 @@
       {% for video in videos %}
         <div class="card mb-4 w-100">
           <div class="card-body">
-            <form ref='uploadForm' 
+            <form rel='uploadForm' 
             id='uploadForm' 
-            action='' 
             method='post' 
             encType="multipart/form-data">
+            <label for="title">Title</label>
             <input type="text" class="form-control mb-3" 
                 id="title" name="title" value="{{video.title}}"
                 placeholder="Change the title..." autocomplete="off">
@@ -19,6 +19,7 @@
                 Your browser does not support the video tag.
               </video>
             </div>
+            <label for="description">Description</label>
             <textarea rows="5" class="form-control mb-3" 
                 id="description" name="description" 
                 placeholder="Change the description..." 

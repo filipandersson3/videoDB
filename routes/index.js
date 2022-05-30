@@ -12,7 +12,6 @@ router.get('/', async function (req, res, next) {
   await pool.promise()
     .query('SELECT * FROM fipann_videos ORDER BY ' + req.session.sort)
     .then(([rows, fields]) => {
-      console.log(rows);
       let data = {
         layout: 'layout.njk',
         title: 'Videos',
@@ -27,17 +26,18 @@ router.get('/', async function (req, res, next) {
 });
 
 router.post('/', async (req, res, next) => {
-  const sort = req.body.sort;
-  if (sort == 'newest') {
+  const body = req.body;
+  console.log(body);
+  if (typeof body.newest !== 'undefined') {
     req.session.sort = 'updated_at DESC'
     res.redirect('/');
-  } else if (sort == 'oldest') {
+  } else if (typeof body.oldest !== 'undefined') {
     req.session.sort = 'updated_at ASC'
     res.redirect('/');
-  } else if (sort == 'alphabetically') {
+  } else if (typeof body.alphabetically !== 'undefined') {
     req.session.sort = 'title ASC'
     res.redirect('/');
-  } else if (sort == 'random') {
+  } else if (typeof body.random !== 'undefined') {
     req.session.sort = 'RAND ()'
     res.redirect('/');
   } else {

@@ -5,28 +5,30 @@
       <div class="card mb-4 w-100">
         <div class="card-body">
           <h5 class="card-title mb-3 bigfont">Video upload</h5>
-          <form ref='uploadForm' 
+          <form rel='uploadForm' 
             id='uploadForm' 
             action='/upload' 
             method='post' 
             encType="multipart/form-data">
             <div class="mb-4">
+              <label for="title">Title</label>
               <input type="text" class="form-control mb-2" 
                 id="title" name="title" 
                 placeholder="Add a title..." autocomplete="off">
+              <label for="description">Description</label>
               <textarea rows="5" class="form-control" 
                 id="description" name="description" 
                 placeholder="Add a description..." 
                 autocomplete="off"></textarea>
             </div>
             <div class="mb-4">
-              <h6 class="card-subtitle mb-3">Upload the video file (mp4 file below 8 MB)</h6>
-              <input type="file" name="videoFile"/>
+              <label for="videoFile" class="mb-3">Upload the video file (mp4 file below 8 MB)</label>
+              <input type="file" id="videoFile" name="videoFile"/>
             </div>
             <input type='submit' value='Upload' 
               class="btn btn-primary mr-auto mb-2"/>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

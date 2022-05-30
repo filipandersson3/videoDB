@@ -33,3 +33,6 @@ Förra lektionen lade jag till ikoner och gjorde typ sidan mer responsiv, men m�
 
 ## Lektion 13
 Förra lektionen fick jag hosting att funka och jobbade med användarvänlighet, någon annan fick testa sidan och den här lektionen ska jag jobba med feedbacken.
+
+## Lektion 14
+Förra lektionen blev jag färdig med att jobba med feedbacken, nu är sidan klar och jag ska validera HTML, CSS och se om det finns några problem med tillgänglighet med Wave.
