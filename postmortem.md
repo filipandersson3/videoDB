@@ -51,17 +51,73 @@ HTML. Jag hade inte först tänkt på att videor kunde visas direkt i HTML utan
 trodde att jag skulle behöva ladda ner en videospelare för sidan, men det blev 
 mycket lättare nu.
 
+Efter det gjorde jag en upload sida som skapar en post i databasen och sparar 
+en video på servern, file upload och andra inputs i form som js och 
+express-fileupload tar hand om.
 
+Sen gjorde jag en edit sida som är nästan samma som upload sida fast den är 
+kopplad till en viss ID, som är videopostens ID i databasen. Skillnaden är att 
+fälten redan är ifyllda med title och description och att det inte går att ladda 
+upp en ny video, så det är bara databasen som ändras.
 
-Redovisa arbetets olika delar. Så att läsaren förstår vad du gjort och hur.
+Men det blev problem när jag märkte att alla videor måste laddas när man laddar 
+sidan. Det är dåligt för prestandan så jag gjorde så att de bara laddas när man 
+klickar på videon. Men då behövde jag också thumbnails, så jag hittade en 
+thumbnail generator på npm som skapar en ny thumbnail för varje video när man 
+laddar upp dom.
 
-Använd gärna bilder för att illustrera.
+Delete möjlighet skulle jag lägga till på edit sidan, men det blev komplicerat 
+när jag kom på att jag behövde ta bort video, thumbnail och databas entry. 
 
-För att lägga till bilder i markdown. Bilderna kan du ladda upp med Git som vanligt, länka dem med url eller filnamnet.
+Sorteringsfunktion med sessions. Sorteringsknappar reloadar sidan med en annan 
+session som påverkar GET.
+
+Filer med samma namn skapade problem, så jag använder nu istället hashade 
+filnamn och gjorde en check för att filen slutar på .mp4.
+
+Sen gjorde jag en enkel navbar och började på att göra sidan samma som min figma 
+design. Då skulle jag ändra färger och fonts i Bootstrap, så jag behövde ladda 
+ner bootstrap med npm, skapa variables fil och ändra det där. Det var svårt att 
+förstå dokumentationen, så det tog länge att bara ändra typ en färg.
+
+Efter det gjorde jag responsivitet och försökte att förstå bootstraps responsiva 
+klasser och det tog ett tag, men sen fick jag automatiska breakpoints och det 
+blev bra. 
+
+Hosting var lite svårt eftersom jag glömde att läsa hosting guiden så jag hade 
+bland annat fel version på node och jag fick lära mig använda heroku CLI.
+
+Jag märkte sen att jag hade glömt att göra sort by menyn responsiv, så jag 
+började först med att försöka göra det med grid, men det blev fel om och om igen 
+och det hade varit mycket lättare om jag bara använde flex och ändrade 
+flex-direction vid en breakpoint, så jag gjorde det.
+
+### Testing
+
+läs testing.md
+
+Fanns bland annat säkerhetsproblem som kunde paja sidan.
 
 ## Positiva erfarenheter
 
 Här beskriver du vad som har gått bra i ditt projekt och analyserar varför. Hur ska du upprepa framgångarna.
+
+Jag har fått använda flera olika npm packages och känner mig mer bekväm med hur 
+det funkar nu.
+
+Ganska lite problem med databas eftersom jag har använt det förut. 
+
+Jag tycker att jag gjorde en design som ser helt okej ut och den verkade lätt 
+att använda från min testing. Jag kunde också kopiera designen från Figma, så 
+att det ser lika ut som jag hade planerat.
+
+Jag gjorde också tester på andra, på responsivitet och användbarhet och använde 
+verktyg som Wave för att testa vidare. Jag validerade också det som gick att 
+validera, så att det följer HTML regler osv.
+
+Planeringen gick bra för att jag hann göra allt som jag hade planerat och hade 
+tid över för testing och hosting och det. Mycket tid går åt för allt sånt, men 
+jag hade planerat för det.
 
 ## Negativa erfarenheter
 
